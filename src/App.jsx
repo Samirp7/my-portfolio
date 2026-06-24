@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, Sparkles, Code, Terminal, Layers } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -16,7 +16,6 @@ const staggerContainer = {
 };
 
 export default function App() {
-  // 1. REPLACED: Added your actual technical projects
   const projects = [
     { 
       title: "Student Result Management Engine", 
@@ -35,11 +34,11 @@ export default function App() {
     }
   ];
 
-  // REPLACED: Added your core technology capability set
   const skills = ["Python", "Java", "C Language", "MySQL / SQL", "Linux Systems", "Git & GitHub", "React Architecture"];
 
   return (
-    <div className="min-h-screen bg-[#050508] text-[#eeeef5] font-sans selection:bg-purple-500 selection:text-white overflow-x-hidden">
+    /* FIXED: Added 'relative' class so ambient glows stay securely clipped inside this box */
+    <div className="relative min-h-screen bg-[#050508] text-[#eeeef5] font-sans selection:bg-purple-500 selection:text-white overflow-x-hidden">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-900/10 rounded-full blur-[140px] pointer-events-none" />
@@ -70,18 +69,15 @@ export default function App() {
           animate="visible"
           className="space-y-6"
         >
-          {/* REPLACED: Dynamic Availability String */}
           <motion.span variants={fadeInUp} className="text-cyan-400 uppercase tracking-[0.2em] text-xs font-semibold font-mono flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Available for internships & collaboration
           </motion.span>
           
-          {/* REPLACED: Personalized Hero Name Layout */}
           <motion.h1 variants={fadeInUp} className="text-5xl md:text-8xl font-extrabold tracking-tight leading-[1.05]">
             Samir <br />
             <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Parajuli</span>.
           </motion.h1>
 
-          {/* REPLACED: Specific Context Paragraph */}
           <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
             <strong className="text-white font-medium">BIT Student</strong> at MIT Bagbazar, Kathmandu. 
             I build robust software architectures using Python, Java, and Linux execution environments.
@@ -98,14 +94,15 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* REPLACED: Added About Context Block */}
+      {/* About Section */}
       <section id="about" className="py-20 px-6 max-w-5xl mx-auto border-t border-white/5">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="grid md:grid-columns-2 gap-12 items-start"
+          /* FIXED: Changed 'md:grid-columns-2' to correct class 'md:grid-cols-2' */
+          className="grid md:grid-cols-2 gap-12 items-start"
         >
           <div className="space-y-6">
             <motion.h2 variants={fadeInUp} className="text-3xl font-bold tracking-tight text-white">
@@ -129,7 +126,7 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* REPLACED: Added Dedicated Skills Grid */}
+      {/* Skills Section */}
       <section id="skills" className="py-20 px-6 max-w-5xl mx-auto border-t border-white/5">
         <motion.div
           initial="hidden"
@@ -170,7 +167,7 @@ export default function App() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ y: -8 }}
-                className="group relative rounded-xl border border-white/5 bg-[#12121e]/40 p-6 flex flex-col justify-between aspect-[4/3] cursor-pointer overflow-hidden transition-all duration-300 hover:border-cyan-500/20"
+                className="group relative rounded-xl border border-white/5 bg-[#12121e]/40 p-6 flex flex-col justify-between absolute aspect-[4/3] cursor-pointer overflow-hidden transition-all duration-300 hover:border-cyan-500/20"
               >
                 <div className="absolute inset-0 bg-cyan-400/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                 
@@ -182,7 +179,6 @@ export default function App() {
                       </span>
                     ))}
                   </div>
-                  {/* REPLACED: Anchored link directly to your Github */}
                   <a href="https://github.com/Samirp7" target="_blank" rel="noreferrer">
                     <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-cyan-400 transition-colors" />
                   </a>
@@ -206,7 +202,6 @@ export default function App() {
             <p className="text-xs text-gray-600 font-mono">MIT Bagbazar • Kathmandu, Nepal</p>
           </div>
           
-          {/* REPLACED: Tied anchors directly to your specific handles and university digital credentials */}
           <div className="flex gap-4">
             <a href="https://github.com/Samirp7" target="_blank" rel="noreferrer" className="p-3 rounded-md bg-white/5 border border-white/5 hover:bg-white/10 hover:border-cyan-500/30 text-gray-400 hover:text-cyan-400 transition-all">
               <Github className="w-4 h-4" />
