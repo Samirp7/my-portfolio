@@ -148,51 +148,52 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* Works Section Grid */}
-      <section id="work" className="py-20 px-6 max-w-5xl mx-auto border-t border-white/5">
+     {/* Works Section Grid */}
+<section id="work" className="py-20 px-6 max-w-5xl mx-auto border-t border-white/5">
+  <motion.div 
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-100px" }}
+    variants={staggerContainer}
+    className="space-y-12"
+  >
+    <motion.h2 variants={fadeInUp} className="text-3xl font-bold tracking-tight">
+      03 / Core Implementations
+    </motion.h2>
+
+    <div className="grid md:grid-cols-2 gap-8">
+      {projects.map((project, index) => (
         <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="space-y-12"
+          key={index}
+          variants={fadeInUp}
+          whileHover={{ y: -8 }}
+          /* FIXED: Removed the stray 'absolute' class here */
+          className="group relative rounded-xl border border-white/5 bg-[#12121e]/40 p-6 flex flex-col justify-between aspect-[4/3] cursor-pointer overflow-hidden transition-all duration-300 hover:border-cyan-500/20"
         >
-          <motion.h2 variants={fadeInUp} className="text-3xl font-bold tracking-tight">
-            03 / Core Implementations
-          </motion.h2>
+          <div className="absolute inset-0 bg-cyan-400/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+          
+          <div className="flex justify-between items-start z-10">
+            <div className="flex flex-wrap gap-1.5">
+              {project.tags.map((t, idx) => (
+                <span key={idx} className="text-[10px] uppercase tracking-wider font-mono bg-white/5 px-2 py-1 rounded border border-white/5 text-cyan-400">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <a href="https://github.com/Samirp7" target="_blank" rel="noreferrer">
+              <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-cyan-400 transition-colors" />
+            </a>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.div 
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -8 }}
-                className="group relative rounded-xl border border-white/5 bg-[#12121e]/40 p-6 flex flex-col justify-between absolute aspect-[4/3] cursor-pointer overflow-hidden transition-all duration-300 hover:border-cyan-500/20"
-              >
-                <div className="absolute inset-0 bg-cyan-400/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                
-                <div className="flex justify-between items-start z-10">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((t, idx) => (
-                      <span key={idx} className="text-[10px] uppercase tracking-wider font-mono bg-white/5 px-2 py-1 rounded border border-white/5 text-cyan-400">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <a href="https://github.com/Samirp7" target="_blank" rel="noreferrer">
-                    <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-cyan-400 transition-colors" />
-                  </a>
-                </div>
-
-                <div className="z-10 mt-auto">
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-300 transition-colors">{project.title}</h3>
-                  <p className="text-gray-400 text-sm font-light leading-relaxed">{project.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="z-10 mt-auto">
+            <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-300 transition-colors">{project.title}</h3>
+            <p className="text-gray-400 text-sm font-light leading-relaxed">{project.desc}</p>
           </div>
         </motion.div>
-      </section>
+      ))}
+    </div>
+  </motion.div>
+</section>
 
       {/* Footer / Connect */}
       <footer id="contact" className="border-t border-white/5 bg-black/40 backdrop-blur-md py-16 px-6">
